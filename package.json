@@ -1,0 +1,21 @@
+{
+  "name": "sync",
+  "version": "1.0.0",
+  "description": "This is a file sync server, that allows you to synchronize your local clones with it.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sync",
+    "files"
+  ],
+  "author": "Severin Nitsche",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6",
+    "express-session": "^1.17.0"
+  }
+}

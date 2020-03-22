@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Sync</title>
+    <link rel="stylesheet" href="/css/master.css" />
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="border">
+        <input type="text" id="directory" placeholder="directory" />
+      </div>
+    </header>
+    <main>
+      <div id='files' data-src="/files/sync" width="" height=""></div>
+      <input type="file" multiple />
+      <script src="js/upload.js" charset="utf-8"></script>
+    </main>
+    <footer><div><p>by Severin<p></div></footer>
+  </body>
+</html>
