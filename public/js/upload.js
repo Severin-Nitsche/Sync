@@ -20,8 +20,9 @@ function update(value) {
 
 function del(file) {
   let path = 'sync:';
-  if(directory.value != '') {
-    path += directory.value.split('/').join(':')+':';
+  path += directory.value.split('/').join(':');
+  if(!path.endsWith(':')) {
+    path += ':'
   }
   console.log(`/delete/${path}${file}`);
   fetch(`/delete/${path}${file}`,{method: 'DELETE'});
@@ -30,7 +31,10 @@ function del(file) {
 
 function load() {
   document.querySelector('#files').innerHTML = '';
-  fetch('/files/sync:'+directory.value.split('/').join(':')).then((res) => {if(res.redirected) location.replace(res.url); res.body.getReader().read().then((s)=>{let string='';for(let i=0; i<s.value.length; i++){string+=String.fromCharCode(s.value[i]);}document.querySelector('#files').innerHTML=string;})});
+  let path = '/files/sync'
+  let dir = directory.value.split('/').join(':')
+  if(dir != '') path += ':'+dir;
+  fetch(path).then((res) => {if(res.redirected) location.replace(res.url); res.body.getReader().read().then((s)=>{let string='';for(let i=0; i<s.value.length; i++){string+=String.fromCharCode(s.value[i]);}document.querySelector('#files').innerHTML=string;})});
 }
 
 directory.addEventListener('change',() =>{

@@ -22,12 +22,24 @@ function add(file, directory) {
   serialize()
 }
 
+function simplify(dir) {
+  if(dir.endsWith('/')) {
+    return dir.substring(0,dir.length-1)
+  } else {
+    return dir
+  }
+}
+
 function remove(file, directory) {
-  files.forEach((item) => {
-    if(item.file == file && item.directory == directory) {
-      files.splice(item,1)
-    }
+  files = files.filter((item) => {
+    console.log('next item')
+    console.log(file)
+    console.log(item.file)
+    console.log(simplify(item.directory))
+    console.log(simplify(directory))
+    return !(item.file == file && simplify(item.directory) == simplify(directory))
   })
+  console.log(files)
   serialize()
 }
 

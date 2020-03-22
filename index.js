@@ -90,6 +90,7 @@ app.delete('/delete/:path', (request,response) => {
   }
 
   let path = request.params.path;
+  console.log(path)
 
   if(!path.startsWith('sync')) {
     response.status(403).send();
@@ -97,6 +98,7 @@ app.delete('/delete/:path', (request,response) => {
   }
 
   path = path.split(':').join('/');
+  console.log(path)
   if(fs.lstatSync(path).isDirectory()) {
     fs.rmdir(path,(err) => error(err, response));
   } else {
@@ -104,6 +106,8 @@ app.delete('/delete/:path', (request,response) => {
   }
   let f = path.substring(path.lastIndexOf('/')+1);
   let d = path.substring(4,path.lastIndexOf('/')+1);
+  console.log(f)
+  console.log(d)
   versioning.remove(f,d)
   response.end();
 });
