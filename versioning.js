@@ -13,7 +13,7 @@ function add(file, directory) {
   let succes = false
   files.forEach((item, i) => {
     if(item.file == file && item.directory == directory) {
-      item.time = Date.now()
+      item.time = fs.statSync(directory+'/'+file).mtime
       succes = true
     }
   });

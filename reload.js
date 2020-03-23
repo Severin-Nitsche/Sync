@@ -6,7 +6,7 @@ function index(directory, data, remove) {
     if(fs.lstatSync(directory+'/'+file).isDirectory()) {
       index(directory+'/'+file, data, remove)
     } else {
-      data.push({file: file, directory: directory.replace(remove,''), time: Date.now()})
+      data.push({file: file, directory: directory.replace(remove,''), time: fs.statSync(directory+'/'+file).mtime})
     }
   })
 }
