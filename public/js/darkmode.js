@@ -1,6 +1,14 @@
+function getCookie(cookie) {
+  for(const item of document.cookie.split(';')) {
+    if(item.startsWith(cookie)) {
+        return item.substring(item.indexOf('=')+1)
+    }
+  }
+}
+
 function toggleDark() {
-  document.cookie = document.body.toggleAttribute('dark')?'dark':''
+  document.cookie = `dark=${document.body.toggleAttribute('dark')};`
 }
 
 darkmode.addEventListener('click', toggleDark)
-if(document.cookie == 'dark') toggleDark()
+if(getCookie('dark')=='true') toggleDark()
