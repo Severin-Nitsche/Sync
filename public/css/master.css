@@ -103,3 +103,36 @@ button {
 .login .container img {
   height: 4rem;
 }
+
+#darkmode {
+  width: 2rem;
+}
+
+body[dark] a {
+  color: cornflowerblue;
+}
+
+body[dark] {
+  background: #222;
+}
+
+body[dark] p {
+  color: white;
+}
+
+body[dark] button {
+  background: transparent;
+  color: cornflowerblue;
+}
+
+body[dark] .filepond--panel-top {
+  background: #708284;
+}
+
+body[dark] .filepond--panel-center {
+  background: #708284;
+}
+
+body[dark] .filepond--panel-bottom {
+  background: #708284;
+}
