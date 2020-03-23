@@ -1,6 +1,6 @@
 const fs = require('fs');
 const express = require('express');
-const fileUpload = require('express-fileUpload');
+const fileUpload = require('express-fileupload');
 const session = require('express-session');
 const versioning = require('./versioning.js');
 const app = express();
