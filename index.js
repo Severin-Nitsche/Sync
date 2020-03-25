@@ -116,14 +116,25 @@ app.post('/login', (request,response) => {
   let user = request.header('user');
   let pwd = request.header('pwd');
   if(authenticate(user, pwd)) {
-    response.writeHead(302,{'Location':'/'});
     request.session.user = user;
     request.session.pwd = pwd;
+    response.writeHead(302,{'Location':'/'});
+    response.end();
+    return;
   }
+  response.writeHead(403);
   response.end();
 });
 
 app.get('/download/:path', (request,response) => {
+
+  if(!authenticate(request.session.user, request.session.pwd) && !authenticate(request.header('user'),request.header('pwd'))) {
+    response.status(403).send()
+    response.end()
+    console.log('unauthorized download attempt');
+    return
+  }
+
   let path = request.params.path.split(':').join('/');
   if(!path.startsWith('sync')) {
     response.status(403).send();
